@@ -7,11 +7,19 @@ import java.util.HashMap;
 
 
 
-public class read {
+
+public class Analysis {
+
   public static void main(String[] args) {
+    if (args.length == 0) {
+        System.out.println("No file path provided. Please provide the path to the social network file as a command-line argument.");
+        return;
+      }
     try {
+      // System.out.println(args[0]);
       //File socNet = new File("/home/pintov/h-drive/Social-Network/social-network1.txt" );
-      File socNet = new File("C:\\Users\\Viren Pinto\\OneDrive\\Desktop\\Social-Network\\social-network1.txt" );
+      // File socNet = new File("C:\\Users\\Viren Pinto\\OneDrive\\Desktop\\Social-Network\\social-network1.txt" );
+      File socNet = new File(args[0]);
       Scanner Read = new Scanner(socNet);
       int nodecount = 0;
       int totalEdgeCount = 0;
@@ -20,7 +28,9 @@ public class read {
       ArrayList<String> names = new ArrayList<>();
       ArrayList<Integer> arrayMedian = new ArrayList<>();
       HashMap<String, Integer> followerCount = new HashMap<>();
-      
+     
+     
+    
 
       // loop checks if there is a next line
       while (Read.hasNextLine()) 
@@ -38,6 +48,8 @@ public class read {
           int currentFollowers = followerCount.getOrDefault(following, 0);
           followerCount.put(following, currentFollowers + 1);
           edgecount = edgecount + 1;
+          
+          
         }
     
         lineScan.close();
@@ -78,12 +90,12 @@ public class read {
       Collections.sort(arrayMedian);
       float answer = (float) totalEdgeCount/(nodecount*(nodecount-1));
 
-      System.out.println("\nTotal number of nodes: " + nodecount);
-      System.out.println("\nTotal number of edges: " + totalEdgeCount);
+      // System.out.println("\nTotal number of nodes: " + nodecount);
+      // System.out.println("\nTotal number of edges: " + totalEdgeCount);
       System.out.println("\nTask 1: " + answer);
       System.out.println("\nTask 3: " + names);
       System.out.println("\nTask 5: " + median);
-      //System.out.println("\nTask 6: " + median);
+      //System.out.println("\nTask 6: " + );
 
       // for (int i = 0; i<arrayMedian.size(); i++) {
       // int curr = arrayMedian.get(i);
